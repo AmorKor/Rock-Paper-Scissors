@@ -82,7 +82,9 @@ function startRound() {
     const compChoice = choices[
         Math.floor(Math.random() * 10) % choices.length
     ]
-    console.log(userChoice, compChoice)
+    console.log(`Choices: 
+    User: ${userChoice}
+    Comp: ${compChoice}`)
     
     defineWinner(userChoice, compChoice)
 }
@@ -97,45 +99,41 @@ function defineWinner(userMove, compMove) {
     } else if((userCoefficient+1) === compCoefficient || (compCoefficient+1) === userCoefficient) {
         // if choices are standing nearby then wins one that have highter priority coefficient
             if(userCoefficient < compCoefficient) {
-                resultField.textContent = `You (${userMove.toUpperCase()}) beat the Comp (${compMove.toUpperCase()}). Keep it up!`
-                resultField.style.color = 'lightgreen'
-                userScore++
-                userScoreField.textContent = userScore
+                userWins(userMove, compMove)
             } else {
-                resultField.textContent = `Comp (${compMove.toUpperCase()}) beats You (${userMove.toUpperCase()}). Do not worry.`
-                resultField.style.color = 'red'
-                compScore++
-                compScoreField.textContent = compScore
+                compWins(userMove, compMove)
             }
     } else {
         // if choices coeficient differ on more the 1:
-        // if differance is odd then wins lower
         // if differance is even then wins higher
+        // if differance is odd then wins lower
         if((Math.abs(userCoefficient-compCoefficient) % 2) === 0) {
             if(userCoefficient > compCoefficient) {
-                resultField.textContent = `You (${userMove.toUpperCase()}) beat the Comp (${compMove.toUpperCase()}). Keep it up!`
-                resultField.style.color = 'lightgreen'
-                userScore++
-                userScoreField.textContent = userScore
+                userWins(userMove, compMove)
             } else {
-                resultField.textContent = `Comp (${compMove.toUpperCase()}) beats You (${userMove.toUpperCase()}). Do not worry.`
-                resultField.style.color = 'red'
-                compScore++
-                compScoreField.textContent = compScore
+                compWins(userMove, compMove)
             }
         } else {
             if(userCoefficient > compCoefficient) {
-                resultField.textContent = `Comp (${compMove.toUpperCase()}) beats You (${userMove.toUpperCase()}). Do not worry.`
-                resultField.style.color = 'red'
-                compScore++
-                compScoreField.textContent = compScore
+                compWins(userMove, compMove)
             } else {
-                resultField.textContent = `You (${userMove.toUpperCase()}) beat the Comp (${compMove.toUpperCase()}). Keep it up!`
-                resultField.style.color = 'lightgreen'
-                userScore++
-                userScoreField.textContent = userScore
+                userWins(userMove, compMove)
             }
         }
     }
     
+}
+
+function userWins(user, comp) {
+    resultField.textContent = `You (${user.toUpperCase()}) beat the Comp (${comp.toUpperCase()}). Keep it up!`
+    resultField.style.color = 'lightgreen'
+    userScore++
+    userScoreField.textContent = userScore
+}
+
+function compWins(user, comp) {
+    resultField.textContent = `Comp (${comp.toUpperCase()}) beats You (${user.toUpperCase()}). Do not worry.`
+    resultField.style.color = 'red'
+    compScore++
+    compScoreField.textContent = compScore
 }
