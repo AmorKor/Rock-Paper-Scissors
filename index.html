@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RPS game</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header class="header header--start">
+        <h1 class="title"></h1>
+        <div class="menu">
+            <button class="menu__button" id="RPS">
+                Rock Paper Scissors
+            </button>
+            <span class="slash">/</span>
+            <button class="menu__button" id="RPSLSp">
+                Rock Paper Scissors Lizard Spoke
+            </button>
+        </div>
+    </header>
+    <main class="game game--inactive">
+        <div class="counter counter--inactive">
+            <span class="counter__comp">0</span>:<span class="counter__user">0</span>
+            <p class="counter__label counter__label--comp">comp</p>
+            <p class="counter__label counter__label--user">user</p>
+        </div>
+        <div class="container">
+            <div class="result">
+                To start the game make your choice!
+            </div>
+            <div class="options options--inactive"></div>
+        </div>
+        <script type="module" src="app.js"></script>
+    </main>
+</body>
+</html>

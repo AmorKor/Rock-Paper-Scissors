@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: salmon;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    background-color: #fff;
+    padding: 30px;
+    height: 10vh;
+    /* display: grid; */
+        
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: bold;
+    transition: all 900ms ease-in-out;
+}
+
+.header--start {
+    height: 100vh;
+}
+
+.menu {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    transition: opacity 500ms ease-in-out;
+}
+
+.menu--inactive {
+    opacity: 0;
+}
+
+.menu__button {
+    background-color: #fff;
+    border: none;
+    font-size: 2rem;
+    font-weight: inherit;
+
+    padding: 15px;
+    transition: transform 300ms ease;
+}
+
+#RPS {
+    align-self: end;
+}
+
+#RPSLSp {
+    align-self: start;
+}
+
+.title {
+    display: grid;
+    place-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    /* background-color: red; */
+}
+
+.title__active {
+    position: static;
+    height: 5vh;
+    transition: height 1100ms ease-in-out, opacity 300ms ease-in-out;
+    opacity: 1;
+}
+
+.menu__button:hover {
+    transform: translate(-10px, -10px)
+}
+
+.game--inactive {
+    display: none;
+}
+
+.counter {
+    border: 3px solid white;
+    width: 175px;
+    height: 75px;
+    margin: 25px auto;
+    padding: 15px;
+    position: relative;
+
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.counter--inactive {
+    display: none;
+}
+
+.counter__label {
+    background-color: rgb(187, 0, 0);
+    width: 55px;
+
+    color: white;
+    font-size: 0.85rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    position: absolute;
+    top: 30%
+}
+
+.counter__label--comp {
+    left: -30px;
+}
+
+.counter__label--user {
+    right: -30px;
+}
+
+.container {
+    margin: 0 auto;
+    width: max-content;
+    text-align: center;
+    /* margin-top: 35px; */
+}
+
+.result {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 55px 0;
+}
+
+.options {
+    display: flex;
+    flex-flow: row nowrap;
+    column-gap: 30px;
+    margin: 25px;
+    justify-content: center;
+}
+
+.options--inactive {
+    display: none;
+}
+
+.options__item {
+    border: 3px solid white;
+    border-radius: 50%;
+    padding: 5px;
+    transition: transform 100ms ease;
+}
+
+.options__item:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.options__item:active {
+    transform: scale(1)
+}
