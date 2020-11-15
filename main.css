@@ -32,6 +32,12 @@ body {
     transition: opacity 500ms ease-in-out;
 }
 
+.menu--container {
+    display: grid;
+    grid-auto-rows: 100px;
+    place-items: center;
+}
+
 .menu--inactive {
     opacity: 0;
 }
@@ -46,12 +52,87 @@ body {
     transition: transform 300ms ease;
 }
 
-#RPS {
-    align-self: end;
+.menu__button:hover, 
+.menu__button:focus {
+    transform: translate(-10px, -10px);
+    outline: none;
 }
 
-#RPSLSp {
-    align-self: start;
+/* SETTIN' MAX SCORE FIELD */
+/* ---------------------- */
+.scoreSetter {
+    transition: opacity 500ms ease-in-out
+}
+
+.scoreSetter--inactive {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.scoreSetter__label {
+    font-size: 1.5rem;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    appearance: none;
+}
+input[type=number]::-webkit-outer-spin-button {
+    appearance: none;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+label[for=scoreSetter] {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#scoreSetter__field {
+    border: none;
+    border-bottom: 2px solid black;
+    box-shadow: none;
+    outline: none;
+    padding-bottom: 5px;
+    width: 100px;
+
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none; 
+
+}
+
+#scoreSetter__field:focus {
+    box-shadow: none;
+}
+
+.scoreSetter__button {
+    border: none;
+    background: url(img/right-arrow-1438234-1216195.png) no-repeat center/65%;
+    width: 40px;
+    height: 40px;
+    transition: transform 50ms ease;
+}
+
+.scoreSetter__button:focus {
+    outline: none;
+    box-shadow: none;
+    transform: translateX(5px)
+}
+
+.scoreSetter__button:active {
+    box-shadow: none;
+    outline: none;
+    transform: translateX(5px)
 }
 
 .title {
@@ -75,12 +156,22 @@ body {
     opacity: 1;
 }
 
-.menu__button:hover {
-    transform: translate(-10px, -10px)
+.title--end {
+    height: 100%;
+    opacity: 1;
+    transition: opacity 600ms ease-in-out;
+}
+
+.title--anim {
+    opacity: 0;
 }
 
 .game--inactive {
     display: none;
+}
+
+.game--end {
+    pointer-events: none;
 }
 
 .counter {
@@ -153,6 +244,12 @@ body {
     border-radius: 50%;
     padding: 5px;
     transition: transform 100ms ease;
+
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none; 
 }
 
 .options__item:hover {

@@ -3,18 +3,29 @@ import {RPS, RPSLSp} from './data.js'
 let choices = []
 let compScore = 0
 let userScore = 0
+let maxScore
 let availableOptions
 
 const resultField = document.querySelector('.result')
 const compScoreField = document.querySelector('.counter__comp')
 const userScoreField = document.querySelector('.counter__user')
+const menu = document.querySelector('.menu')
+const header = document.querySelector('.header') 
+const title = document.querySelector('.title')
+
 
 // fire setting game options depends on chosen game
 const gameButtons = document.querySelectorAll('.menu__button')
 gameButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        setChoices.call(this)
-        startAnimation.call(this)
+    button.addEventListener('click', function(e) {
+        const maxScoreField = document.querySelector('.scoreSetter')
+        
+        if(e.target.getAttribute('id') === 'RPS' || e.target.getAttribute('id') === 'RPSLSp') {
+            setChoices.call(this)
+            nextMenu()
+            submitField.call(this)
+            
+        }
         // start round after clicking on the available move
         availableOptions.forEach(item => {
             item.addEventListener('click', function() {
@@ -23,6 +34,7 @@ gameButtons.forEach(button => {
         })
     })
 })
+
 
 // get game setting form data file
 // create available moves and append them on page
@@ -58,26 +70,63 @@ function setChoices() {
     return availableOptions
 }
 
+function setMaxScore() {
+    const input = document.querySelector('#scoreSetter__field')
+    maxScore = +input.value
+}
+
 // classes manipulations to fire transitions and display the game
-function startAnimation() {
-    const header = document.querySelector('.header') 
-    const title = document.querySelector('.title')
-    const menu = document.querySelector('.menu')
+function nextMenu() {
+    const scoreSetterField = document.querySelector('.scoreSetter')
+    const slashSigns = document.querySelectorAll('.slash')
 
     menu.classList.add('menu--inactive')
-
-    setTimeout(() => {
-        menu.remove()
-        header.classList.remove('header--start')
-        title.textContent = `${this.textContent}`
-        title.classList.add('title__active')
-        document.querySelector('.counter').classList.remove('counter--inactive')
-        document.querySelector('.options').classList.remove('options--inactive')
-        document.querySelector('.game').classList.remove('game--inactive') 
+    
+    setTimeout(function() {
+        gameButtons.forEach(button => button.remove())
+        slashSigns.forEach(sign => sign.remove())
+        scoreSetterField.classList.remove('scoreSetter--inactive')
+        menu.classList.remove('menu--inactive')
     }, 600)
 }
 
+function submitField() {
+    // add sumbit on button
+    document.querySelector('.scoreSetter__button').addEventListener('click', () => {
+        setMaxScore()
+        menu.classList.add('menu--inactive')
+
+        setTimeout(() => {
+            startGame.call(this)
+        }, 600)
+    })
+    // add submit on field
+    document.querySelector('#scoreSetter__field').addEventListener('keydown', e => {
+        if(e.key !== 'Enter') return 
+        setMaxScore()
+        menu.classList.add('menu--inactive')
+
+        setTimeout(() => {
+            startGame.call(this)
+        }, 600)
+    })
+}
+
+function startGame() {
+    menu.remove()
+    header.classList.remove('header--start')
+    title.textContent = `${this.textContent}`
+    title.classList.add('title__active')
+    document.querySelector('.counter').classList.remove('counter--inactive')
+    document.querySelector('.options').classList.remove('options--inactive')
+    document.querySelector('.game').classList.remove('game--inactive') 
+}
+
+
 function startRound() {
+    console.log(`Comp Score ${compScore} \n User Score: ${userScore}`)  
+
+
     const userChoice = this.getAttribute('id')
     const compChoice = choices[
         Math.floor(Math.random() * 10) % choices.length
@@ -86,7 +135,31 @@ function startRound() {
     User: ${userChoice}
     Comp: ${compChoice}`)
     
-    defineWinner(userChoice, compChoice)
+    defineWinner(userChoice, compChoice)  
+
+    if(compScore === maxScore) {
+        endGame('Computer')
+    } else if(userScore === maxScore) {
+        endGame('User')
+    }
+}
+
+function endGame(winner) {
+    title.classList.add('title--anim')
+    document.querySelector('.game').classList.add('game--end') 
+        
+    setTimeout(function() {
+                    
+        header.classList.add('header--start')
+        title.classList.add('title--end')
+        title.classList.remove('title--anim')
+
+        if(winner === 'Computer') {
+            title.innerHTML = 'End of the game <br> Computer won'
+        } else if(winner === 'User') {
+            title.innerHTML = 'End of the game <br> User won'
+        }
+    }, 600)
 }
 
 function defineWinner(userMove, compMove) {

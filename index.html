@@ -12,13 +12,24 @@
     <header class="header header--start">
         <h1 class="title"></h1>
         <div class="menu">
-            <button class="menu__button" id="RPS">
-                Rock Paper Scissors
-            </button>
-            <span class="slash">/</span>
-            <button class="menu__button" id="RPSLSp">
-                Rock Paper Scissors Lizard Spoke
-            </button>
+            <div class="menu--container">
+                <div class="scoreSetter scoreSetter--inactive">
+                    <label class="scoreSetter__label" for="scoreSetter">Maximum score:</label>
+                    <input id="scoreSetter__field" type="number" min="0" max="999999">
+                    <button class="scoreSetter__button"></button>
+                </div>
+                <button class="menu__button" id="RPS">
+                    Rock Paper Scissors
+                </button>
+                <span class="slash">/</span>
+                <button class="menu__button" id="RPSLSp">
+                    Rock Paper Scissors Lizard Spoke
+                </button>
+                <span class="slash">/</span>
+                <button class="menu__button" id="Custom">
+                    Custom
+                </button>
+            </div>
         </div>
     </header>
     <main class="game game--inactive">
