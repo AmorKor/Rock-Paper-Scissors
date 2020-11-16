@@ -147,12 +147,15 @@ function startRound() {
 function endGame(winner) {
     title.classList.add('title--anim')
     document.querySelector('.game').classList.add('game--end') 
-        
+    
     setTimeout(function() {
-                    
+        
         header.classList.add('header--start')
         title.classList.add('title--end')
         title.classList.remove('title--anim')
+        document.querySelector('.game').remove()
+        // document.querySelector('.game').classList.add('game--inactive') 
+        
 
         if(winner === 'Computer') {
             title.innerHTML = 'End of the game <br> Computer won'

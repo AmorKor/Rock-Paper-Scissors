@@ -52,6 +52,11 @@ body {
     transition: transform 300ms ease;
 }
 
+.menu__button--inactive {
+    color: grey;
+    pointer-events: none;
+}
+
 .menu__button:hover, 
 .menu__button:focus {
     transform: translate(-10px, -10px);
@@ -166,12 +171,17 @@ label[for=scoreSetter] {
     opacity: 0;
 }
 
+.game {
+    transition: opacity 400ms ease-in-out;
+}
+
 .game--inactive {
     display: none;
 }
 
 .game--end {
     pointer-events: none;
+    opacity: 0;
 }
 
 .counter {
