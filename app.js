@@ -112,6 +112,7 @@ function submitField() {
     })
 }
 
+// Display game
 function startGame() {
     menu.remove()
     header.classList.remove('header--start')
@@ -122,7 +123,7 @@ function startGame() {
     document.querySelector('.game').classList.remove('game--inactive') 
 }
 
-
+// Compare choices, update and check game score
 function startRound() {
     console.log(`Comp Score ${compScore} \n User Score: ${userScore}`)  
 
@@ -144,6 +145,7 @@ function startRound() {
     }
 }
 
+// Show final text
 function endGame(winner) {
     title.classList.add('title--anim')
     document.querySelector('.game').classList.add('game--end') 
@@ -153,9 +155,7 @@ function endGame(winner) {
         header.classList.add('header--start')
         title.classList.add('title--end')
         title.classList.remove('title--anim')
-        document.querySelector('.game').remove()
-        // document.querySelector('.game').classList.add('game--inactive') 
-        
+        document.querySelector('.game').remove()        
 
         if(winner === 'Computer') {
             title.innerHTML = 'End of the game <br> Computer won'
@@ -200,6 +200,7 @@ function defineWinner(userMove, compMove) {
     
 }
 
+// Display text on the screen depending on winner
 function userWins(user, comp) {
     resultField.textContent = `You (${user.toUpperCase()}) beat the Comp (${comp.toUpperCase()}). Keep it up!`
     resultField.style.color = 'lightgreen'
