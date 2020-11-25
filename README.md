@@ -27,6 +27,6 @@ To clearly get the point look at the picture:
 
 Scissors (1) beats paper (2). That's ok, difference between them is 1. At the same time rock (3) beats scissors (1), because they differ by 2, which is even. But what about lizard (4) and scissors? They differ by 3, which is odd. In this case lower value (1, belong to scissors) beats higher (4, belong to lizard).
 
-This cheme allows you to insert whatever options you want, all you need is define where this option on the circle will be. 
+This scheme allows you to insert whatever options you want, all you need is define where this option on the circle will be. 
 
 **_Infinite Rock Paper Scissors game!_**
