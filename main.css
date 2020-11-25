@@ -13,7 +13,6 @@ body {
     background-color: #fff;
     padding: 30px;
     height: 10vh;
-    /* display: grid; */
         
     text-align: center;
     font-size: 1.15rem;
@@ -151,7 +150,6 @@ label[for=scoreSetter] {
     height: 100%;
     z-index: -1;
     opacity: 0;
-    /* background-color: red; */
 }
 
 .title__active {
@@ -227,7 +225,6 @@ label[for=scoreSetter] {
     margin: 0 auto;
     width: max-content;
     text-align: center;
-    /* margin-top: 35px; */
 }
 
 .result {
