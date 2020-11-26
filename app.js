@@ -214,3 +214,13 @@ function compWins(user, comp) {
     compScore++
     compScoreField.textContent = compScore
 }
+
+// console.log(typeof header.clientWidth)
+
+// window.addEventListener('resize', () => {
+//     // console.log(header.clientWidth)
+//     if(header.clientWidth <= 575) {
+//         title.textContent = 'RPLSp'
+//         console.log('hello')
+//     } else return
+// })

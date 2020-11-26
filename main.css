@@ -11,9 +11,9 @@ body {
 
 .header {
     background-color: #fff;
-    padding: 30px;
-    height: 10vh;
-        
+    padding: 15px;
+    height: calc(2rem + 5vh);
+    
     text-align: center;
     font-size: 1.15rem;
     font-weight: bold;
@@ -150,6 +150,19 @@ label[for=scoreSetter] {
     height: 100%;
     z-index: -1;
     opacity: 0;
+
+    font-size: 2rem;
+}
+
+@media (max-width: 590px) {
+    .title {
+        font-size: 1.25rem;
+    }
+
+    .header {
+        padding-top: calc(5vh - (1.75rem / 2));
+        padding-bottom: calc(5vh - (1.75rem / 2));
+    }
 }
 
 .title__active {
@@ -223,6 +236,7 @@ label[for=scoreSetter] {
 
 .container {
     margin: 0 auto;
+    /* height: max-content; */
     width: max-content;
     text-align: center;
 }
@@ -234,12 +248,30 @@ label[for=scoreSetter] {
     margin: 55px 0;
 }
 
+@media (max-width: 685px) {
+    .container {
+        width: 85vw;
+    }
+
+    .result {
+        height: 30px;
+        font-size: 1.25rem;
+    }
+}
+
+
 .options {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     column-gap: 30px;
     margin: 25px;
     justify-content: center;
+}
+
+@media (max-width: 525px) {
+    .options {
+        row-gap: 10px;
+    }
 }
 
 .options--inactive {
