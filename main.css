@@ -236,7 +236,6 @@ label[for=scoreSetter] {
 
 .container {
     margin: 0 auto;
-    /* height: max-content; */
     width: max-content;
     text-align: center;
 }
